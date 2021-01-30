@@ -21,24 +21,24 @@ console.log(process.env.mail)
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-         user: "koushik8.kolli@gmail.com",
-         pass: "9740koushik"
+         user: process.env.email,
+         pass: process.env.mail_password
      }
  });
             
 
  const mailOptions = {
-  from: "koushik8.kolli@gmail.com", // sender address
+  from: process.env.email, // sender address
   to: '', // list of receivers
   subject: 'File Share', // Subject line
   html: ''// plain text body
 };
 
-const s3Region = "us-east-1"
-const s3Bucket = 'fileuploadshare'
+const s3Region = process.env.s3Region
+const s3Bucket = process.env.s3Bucket
 const s3Config = {
-  accessKeyId: "AKIASLQVUVHDD5QFV7G3",
-  secretAccessKey: "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"
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretAccessKey
 };
 AWS.config.update(s3Config);
 
